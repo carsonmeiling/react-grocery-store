@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import ItemsList from './components/ItemsList';
+import Container from 'semantic-ui-react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = { items: [
+    {id: 1, itemName: 'Apples', price: 2.99, stock: 10},
+    {id: 2, itemName: 'Toilet Paper', price: 7.99, stock: 10},
+    {id: 3, itemName: 'Clorox', price: 6.89, stock: 10},
+    {id: 4, itemName: 'Corona Virus', price: 'free', stock: 100},
+  ]
+  }
+
+
+    render() {
+
+      return (
+        <div>
+          <h1>Welcome to the Store</h1>
+          <ItemsList items={this.state.items}/>
+        </div>
+      )
+    }
 }
 
 export default App;
