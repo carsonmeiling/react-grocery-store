@@ -12,6 +12,15 @@ class App extends Component {
   ]
   }
 
+  deleteItem = (id) =>{
+    console.log('delete')
+    const items = this.state.items.filter( item => {
+      if (item.id !== id)
+        return item
+    })
+    this.setState({ items })
+  }
+
   getId = () => {
     // NOTE We are just using this as a helper function for id's since we aren't using a db yet
     return Math.floor((1 + Math.random()) * 0x10000)
@@ -30,7 +39,7 @@ class App extends Component {
       return (
         <div>
           <h1>Welcome to the Store</h1>
-          <ItemsList items={this.state.items}/>
+          <ItemsList items={this.state.items} deleteItem={this.deleteItem}/>
           <ItemForm addItem={this.addItem} />
         </div>
       )

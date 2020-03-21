@@ -1,10 +1,10 @@
 import React from 'react';
 import Item from './Item';
 
-const ItemsList = ({ items }) => (
+const ItemsList = ({ items, deleteItem }) => (
   <div>
     {
-      items.map( item => <Item key={item.id} {...item}/>)
+      items.map( item => <Item key={item.id} {...item} deleteItem = {deleteItem}/>)
     }
   </div>
 )
