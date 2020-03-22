@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ItemsList from './components/ItemsList';
 import ItemForm from './components/ItemForm';
-import Container from 'semantic-ui-react';
+import {Container, Button} from 'semantic-ui-react';
 
 class App extends Component {
   state = { items: [
@@ -9,11 +9,13 @@ class App extends Component {
     {id: 2, itemName: 'Toilet Paper', price: 7.99, stock: 10},
     {id: 3, itemName: 'Clorox', price: 6.89, stock: 10},
     {id: 4, itemName: 'Corona Virus', price: 'free', stock: 100},
-  ]
+  ],
+  showForm: false
   }
 
+  toggleForm = () => this.setState({showForm: !this.state.showForm})
+
   deleteItem = (id) =>{
-    console.log('delete')
     const items = this.state.items.filter( item => {
       if (item.id !== id)
         return item
@@ -35,12 +37,14 @@ class App extends Component {
 
 
     render() {
+      const {items, showForm} = this.state
 
       return (
-        <div>
-          <h1>Welcome to the Store</h1>
-          <ItemsList items={this.state.items} deleteItem={this.deleteItem}/>
-          <ItemForm addItem={this.addItem} />
+        <div class='ui center aligned container'>
+          <h1>Welcome to the Grocery Store</h1>
+          <ItemsList items={items} deleteItem={this.deleteItem}/>
+          <Button color='youtube' onClick={this.toggleForm}>Add New Item</Button>
+          {showForm ? <ItemForm addItem={this.addItem} /> : null}
         </div>
       )
     }

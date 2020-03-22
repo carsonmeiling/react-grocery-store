@@ -3,6 +3,7 @@ import Item from './Item';
 
 const ItemsList = ({ items, deleteItem }) => (
   <div>
+    
     {
       items.map( item => <Item key={item.id} {...item} deleteItem = {deleteItem}/>)
     }
